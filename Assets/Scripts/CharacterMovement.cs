@@ -51,8 +51,10 @@ public class CharacterMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space) && isGrounded && JumpCount==1){
             isGrounded = false;
            // myAnimator.SetBool("isJumping",true); 
-            myRigidbody.AddForce(Vector3.up * JumpForce * Time.deltaTime);
+            myRigidbody.AddForce(Vector3.up * JumpForce);
             JumpCount--;   
+        } else {
+            isGrounded = true;
         }
 
         //Flipping sprite
