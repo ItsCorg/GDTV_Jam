@@ -13,7 +13,7 @@ public class CharacterMovement : MonoBehaviour
 
     float xValue; 
     SpriteRenderer spriteRenderer;
-   // Animator myAnimator; 
+    Animator myAnimator; 
     
     
      
@@ -22,7 +22,7 @@ public class CharacterMovement : MonoBehaviour
     {
         myRigidbody = GetComponent<Rigidbody>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-       // myAnimator = GetComponent<Animator>();  
+        myAnimator = GetComponent<Animator>();  
         JumpCount = 1; 
         isGrounded = true; 
         xValue = 0; 
@@ -40,7 +40,7 @@ public class CharacterMovement : MonoBehaviour
         isGrounded = true;
         xValue = Input.GetAxisRaw("Horizontal") * MovementSpeed * Time.deltaTime;
         transform.Translate (xValue,0,0);
-        //myAnimator.SetBool("isRunning",false);
+        myAnimator.SetFloat("Speed",Mathf.Abs(xValue));
         //myAnimator.SetBool("isJumping",false);
 
         
@@ -50,7 +50,7 @@ public class CharacterMovement : MonoBehaviour
         //Jumping
         if(Input.GetKeyDown(KeyCode.Space) && isGrounded && JumpCount==1){
             isGrounded = false;
-           // myAnimator.SetBool("isJumping",true); 
+            myAnimator.SetBool("isJumping",true); 
             myRigidbody.AddForce(Vector3.up * JumpForce);
             JumpCount--;   
         } else {
@@ -75,7 +75,7 @@ public class CharacterMovement : MonoBehaviour
         if(other.gameObject.tag == "Platform"){
             JumpCount = 1;
             isGrounded = true;
-              
+            myAnimator.SetBool("isJumping",false);   
         }
     }
 }
