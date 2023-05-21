@@ -41,11 +41,6 @@ public class CharacterMovement : MonoBehaviour
         xValue = Input.GetAxisRaw("Horizontal") * MovementSpeed * Time.deltaTime;
         transform.Translate (xValue,0,0);
         myAnimator.SetFloat("Speed",Mathf.Abs(xValue));
-        //myAnimator.SetBool("isJumping",false);
-
-        
-        
-        
         
         //Jumping
         if(Input.GetKeyDown(KeyCode.Space) && isGrounded && JumpCount==1){
@@ -60,12 +55,8 @@ public class CharacterMovement : MonoBehaviour
         //Flipping sprite
          if(xValue<0){
             spriteRenderer.flipX = true;
-            //myAnimator.SetBool("isRunning",true);
-             
         } else if(xValue>0){
-            spriteRenderer.flipX = false;
-            //myAnimator.SetBool("isRunning",true); 
-            
+            spriteRenderer.flipX = false; 
         } 
 
     }
