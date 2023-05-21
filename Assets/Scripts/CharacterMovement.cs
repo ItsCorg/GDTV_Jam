@@ -13,7 +13,8 @@ public class CharacterMovement : MonoBehaviour
 
     float xValue; 
     SpriteRenderer spriteRenderer;
-    Animator myAnimator; 
+    Animator myAnimator;
+    public Animator CameraAnimator; 
     
     
      
@@ -63,10 +64,52 @@ public class CharacterMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision other) {
         //Reset Jump Count when touching a platform
-        if(other.gameObject.tag == "Platform"){
+        switch(other.gameObject.tag){
+
+            case "Platform":
             JumpCount = 1;
             isGrounded = true;
-            myAnimator.SetBool("isJumping",false);   
+            myAnimator.SetBool("isJumping",false);
+            break;
+
         }
     }
+
+    void OnTriggerStay(Collider Cother) {
+
+        switch(Cother.gameObject.tag){
+
+            case "PerspectiveChangeZone":
+            ChangeCameraView();
+            break;
+
+        }
+    }
+
+    void OnTriggerExit(Collider otherC) {
+        
+        switch(otherC.gameObject.tag){
+
+            case "PerspectiveChangeZone":
+            CameraAnimator.SetBool("IsCamera3D",false);
+            break;
+
+        }
+    }
+
+
+
+    void ChangeCameraView(){
+        
+        if(Input.GetKeyDown(KeyCode.F) && CameraAnimator.GetBool("IsCamera3D") == false ){
+            CameraAnimator.SetBool("IsCamera3D",true);
+        } else if (Input.GetKeyDown(KeyCode.F) && CameraAnimator.GetBool("IsCamera3D") == true){
+            CameraAnimator.SetBool("IsCamera3D",false);
+        }
+
+        
+
+    }
+
+
 }
