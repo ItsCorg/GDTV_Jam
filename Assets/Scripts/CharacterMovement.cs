@@ -14,8 +14,8 @@ public class CharacterMovement : MonoBehaviour
     float xValue; 
     SpriteRenderer spriteRenderer;
     Animator myAnimator;
-    public Animator CameraAnimator; 
-    
+    //public Animator CameraAnimator;
+    public CameraController cameraController;
     
      
     // Start is called before the first frame update
@@ -32,7 +32,8 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement(); 
+        Movement();
+        ChangeCameraView();
     }
 
     void Movement(){
@@ -75,12 +76,14 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    void OnTriggerStay(Collider Cother) {
+    bool canSwitchCamera = false;
+    void OnTriggerEnter(Collider Cother) {
 
         switch(Cother.gameObject.tag){
 
             case "PerspectiveChangeZone":
-            ChangeCameraView();
+            //ChangeCameraView();
+            canSwitchCamera = true;
             break;
 
         }
@@ -91,7 +94,9 @@ public class CharacterMovement : MonoBehaviour
         switch(otherC.gameObject.tag){
 
             case "PerspectiveChangeZone":
-            CameraAnimator.SetBool("IsCamera3D",false);
+            //CameraAnimator.SetBool("IsCamera3D",false);
+            canSwitchCamera = false;
+            cameraController.SetMode(use2DCamera: true);
             break;
 
         }
@@ -100,16 +105,19 @@ public class CharacterMovement : MonoBehaviour
 
 
     void ChangeCameraView(){
-        
-        if(Input.GetKeyDown(KeyCode.F) && CameraAnimator.GetBool("IsCamera3D") == false ){
-            CameraAnimator.SetBool("IsCamera3D",true);
-        } else if (Input.GetKeyDown(KeyCode.F) && CameraAnimator.GetBool("IsCamera3D") == true){
-            CameraAnimator.SetBool("IsCamera3D",false);
-        }
+      if (!canSwitchCamera) {
+        return;
+      }
 
-        
+      if (Input.GetKeyDown(KeyCode.F) && cameraController.IsCamera3D == false) {
+          cameraController.SetMode(use2DCamera: false);
+      } else if (Input.GetKeyDown(KeyCode.F) && cameraController.IsCamera3D == true) {
+          cameraController.SetMode(use2DCamera: true);
+      }
 
-    }
+
+
+  }
 
 
 }
