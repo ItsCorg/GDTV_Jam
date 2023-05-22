@@ -38,6 +38,7 @@ public class CharacterMovement : MonoBehaviour
 
     void Movement(){
 
+        if(!cameraController.IsCamera3D){
         //Movement
         isGrounded = true;
         xValue = Input.GetAxisRaw("Horizontal") * MovementSpeed * Time.deltaTime;
@@ -59,7 +60,9 @@ public class CharacterMovement : MonoBehaviour
             spriteRenderer.flipX = true;
         } else if(xValue>0){
             spriteRenderer.flipX = false; 
-        } 
+        }  
+        }
+     
 
     }
 

@@ -14,6 +14,8 @@ public class ObstacleSelectionManager : MonoBehaviour {
   Transform _hoveredObstacle;
   Transform _selectedObstacle;
 
+  public bool isSelected; 
+
   void Update() {
 
     // if we were hovering over an obstacle and are not hovering over it anymore, then we reset its material (unless the obstacle is selected for moving)
@@ -45,14 +47,16 @@ public class ObstacleSelectionManager : MonoBehaviour {
       // set the material of the obstacle we're hovering over, depending on if the player just clicked the mouse button or is just hovering
       obstacleRenderer.material = mousePressed ? selectedMaterial : selectableMaterial;
       if (mousePressed) {
-
+         
         // if we already had an obstacle selected, deselect it now
         if (_selectedObstacle) {
           _selectedObstacle.GetComponent<Renderer>().material = defaultMaterial;
+          isSelected = false;
         }
 
         // store the obstacle we just selected
         _selectedObstacle = obstacle;
+        isSelected = true; 
         //StartObstacleMovement();
       }
       _hoveredObstacle = obstacle;
