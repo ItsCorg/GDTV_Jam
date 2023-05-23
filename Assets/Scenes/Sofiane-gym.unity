@@ -330,6 +330,7 @@ MonoBehaviour:
   RightPos: {x: 2, y: 2, z: -3}
   UpPos: {x: 0, y: 0, z: 0}
   DownPos: {x: 0, y: 0, z: 0}
+  InitialPos: {x: 3.09, y: 1.75, z: 0.06}
   cameraController: {fileID: 1084651371}
   obstacleSelectionManager: {fileID: 603591940}
 --- !u!1 &603591939
