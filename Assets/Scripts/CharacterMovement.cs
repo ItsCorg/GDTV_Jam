@@ -57,9 +57,9 @@ public class CharacterMovement : MonoBehaviour
 
         //Flipping sprite
          if(xValue<0){
-            spriteRenderer.flipX = true;
+            spriteRenderer.flipX = false;
         } else if(xValue>0){
-            spriteRenderer.flipX = false; 
+            spriteRenderer.flipX = true;
         }  
         }
      

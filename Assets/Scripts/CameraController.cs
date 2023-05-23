@@ -26,6 +26,7 @@ public class CameraController : MonoBehaviour {
       // when switching back to 2d, we need to deselect and obstacle if it was selected
       obstacleSelectionManager.DeselectObstacle();
     }
+    Camera.main.orthographic = is2DMode;
   }
 
   public bool IsCamera3D => !is2DMode;
