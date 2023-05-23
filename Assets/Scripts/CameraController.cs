@@ -8,6 +8,8 @@ public class CameraController : MonoBehaviour {
   public CinemachineVirtualCamera Camera3D;
   public CinemachineVirtualCamera Camera2D;
 
+  public ObstacleSelectionManager obstacleSelectionManager;
+
   [SerializeField]
   bool is2DMode = true; // set to the same perspective that the game is in at the start
 
@@ -19,7 +21,11 @@ public class CameraController : MonoBehaviour {
     is2DMode = use2DCamera;
     Camera3D.Priority = is2DMode ? 0 : 1;
     Camera2D.Priority = is2DMode ? 1 : 0;
-    Debug.Log("camera is 2d: " + is2DMode);
+    //Debug.Log("camera is 2d: " + is2DMode);
+    if (is2DMode) {
+      // when switching back to 2d, we need to deselect and obstacle if it was selected
+      obstacleSelectionManager.DeselectObstacle();
+    }
   }
 
   public bool IsCamera3D => !is2DMode;
