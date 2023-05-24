@@ -105,7 +105,6 @@ public class CharacterMovement : MonoBehaviour {
 
     switch (Cother.gameObject.tag) {
       case "PerspectiveChangeZone":
-        Debug.Log("trigger enter");
         canSwitchCamera = true;
         Cother.transform.parent.GetComponent<LickTarget>()?.ToggleInRange(true);
         break;
