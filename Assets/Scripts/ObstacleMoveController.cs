@@ -4,6 +4,8 @@ using static UnityEditor.PlayerSettings;
 
 public class ObstacleMoveController : MonoBehaviour {
 
+  Material material;
+
   public enum ObstaclePosition {
     Up, Down, Left, Right, Initial
   }
@@ -29,7 +31,10 @@ public class ObstacleMoveController : MonoBehaviour {
 
   void Start() {
     initialPos = transform.position;
+    material = GetComponent<Renderer>().material;
   }
+  public Material defaultMaterial => material;
+
 
   void Update() {
     if (isSelected) {

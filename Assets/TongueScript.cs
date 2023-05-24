@@ -1,25 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Cinemachine.CinemachineTriggerAction.ActionSettings;
 
 public class TongueScript : MonoBehaviour {
+
   public CharacterMovement characterMovement;
-  Animator TongueAnimator;
-  float StrechValue;
-
-  public GameObject Frog;
-  public GameObject Obstacle;
-  Vector3 FrogToObstaclePos;
-  // Start is called before the first frame update
   void Start() {
-    TongueAnimator = GetComponent<Animator>();
-    FrogToObstaclePos = new Vector3(Frog.transform.position.x / Obstacle.transform.position.x, Frog.transform.position.y / Obstacle.transform.position.y, Frog.transform.position.z / Obstacle.transform.position.z);
-
     lr = GetComponent<LineRenderer>();
   }
 
-  // Update is called once per frame
   void Update() {
     RollTongue();
 
@@ -69,14 +58,8 @@ public class TongueScript : MonoBehaviour {
       return;
     }
 
-    if (characterMovement.myAnimator.GetBool("IsCamera3D") == true && TongueAnimator.GetBool("RollTongueOut") == false) {
-
-      //TongueAnimator.SetBool("RollTongueOut", true);
+    if (characterMovement.Is3DMode() && !isPlayingTongueAnim) {
       PlayTongueLineRenderer();
-
-    } else if (characterMovement.myAnimator.GetBool("IsCamera3D") == false && TongueAnimator.GetBool("RollTongueOut") == true) {
-
-      //TongueAnimator.SetBool("RollTongueOut", false);
     }
   }
 }

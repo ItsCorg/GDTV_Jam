@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.UI.GridLayoutGroup;
 
 public class CharacterMovement : MonoBehaviour {
 
@@ -12,7 +13,8 @@ public class CharacterMovement : MonoBehaviour {
 
   float xValue;
   SpriteRenderer spriteRenderer;
-  public Animator myAnimator;
+  [SerializeField]
+  Animator myAnimator;
   //public Animator CameraAnimator;
   public CameraController cameraController;
 
@@ -103,19 +105,19 @@ public class CharacterMovement : MonoBehaviour {
 
     switch (Cother.gameObject.tag) {
       case "PerspectiveChangeZone":
-        //ChangeCameraView();
+        Debug.Log("trigger enter");
         canSwitchCamera = true;
+        Cother.transform.parent.GetComponent<LickTarget>()?.ToggleInRange(true);
         break;
     }
   }
-
   void OnTriggerExit(Collider otherC) {
 
     switch (otherC.gameObject.tag) {
       case "PerspectiveChangeZone":
-        //CameraAnimator.SetBool("IsCamera3D",false);
         canSwitchCamera = false;
         cameraController.SetMode(use2DCamera: true);
+        otherC.transform.parent.GetComponent<LickTarget>()?.ToggleInRange(false);
         break;
     }
   }
@@ -134,6 +136,19 @@ public class CharacterMovement : MonoBehaviour {
 
     }
 
+  }
+
+  public void PlayTongueAnimation() {
+    StartCoroutine(PlayAnimationOnce());
+  }
+  private IEnumerator PlayAnimationOnce() {
+    myAnimator.SetBool("IsCamera3D", true);
+    yield return null;
+    myAnimator.SetBool("IsCamera3D", false);
+  }
+
+  public bool Is3DMode() {
+    return myAnimator.GetBool("IsCamera3D");
   }
 
 

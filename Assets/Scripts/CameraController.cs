@@ -12,7 +12,6 @@ public class CameraController : MonoBehaviour {
 
   [SerializeField]
   bool is2DMode = true; // set to the same perspective that the game is in at the start
-  bool isTongueOut = false;
 
   void Start() {
     SetMode(is2DMode);
@@ -26,23 +25,17 @@ public class CameraController : MonoBehaviour {
     Camera2D.Priority = is2DMode ? 1 : 0;
 
     if (didSwitchCamera) {
-      StartCoroutine(PlayAnimationOnce());
+      characterMovement.PlayTongueAnimation();
     }
     
     //Debug.Log("camera is 2d: " + is2DMode);
     if (is2DMode) {
-      // when switching back to 2d, we need to deselect and obstacle if it was selected
+      // when switching back to 2d, we need to deselect obstacle if it was selected
       obstacleSelectionManager.DeselectObstacle();
-      
-      
     }
     Camera.main.orthographic = is2DMode;
   }
 
   public bool IsCamera3D => !is2DMode;
-  private IEnumerator PlayAnimationOnce() {
-    characterMovement.myAnimator.SetBool("IsCamera3D", true);
-    yield return null;
-    characterMovement.myAnimator.SetBool("IsCamera3D", false);
-  }
+
 }

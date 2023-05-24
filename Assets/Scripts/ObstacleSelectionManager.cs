@@ -10,8 +10,6 @@ public class ObstacleSelectionManager : MonoBehaviour {
   Material selectableMaterial;
   [SerializeField]
   Material selectedMaterial;
-  [SerializeField]
-  Material defaultMaterial;
 
   Transform _hoveredObstacle;
   Transform _selectedObstacle;
@@ -20,7 +18,7 @@ public class ObstacleSelectionManager : MonoBehaviour {
 
   public void DeselectObstacle() {
     if (_selectedObstacle != null) {
-      _selectedObstacle.GetComponent<Renderer>().material = defaultMaterial;
+      _selectedObstacle.GetComponent<Renderer>().material = _selectedObstacle.GetComponent<ObstacleMoveController>().defaultMaterial;
       _selectedObstacle.GetComponent<ObstacleMoveController>().ToggleSelection();
       _selectedObstacle = null;
     }
@@ -29,7 +27,7 @@ public class ObstacleSelectionManager : MonoBehaviour {
   void Update() {
     // if we were hovering over an obstacle and are not hovering over it anymore, then we reset its material (unless the obstacle is selected for moving)
     if (_hoveredObstacle != null && _hoveredObstacle != _selectedObstacle) {
-      _hoveredObstacle.GetComponent<Renderer>().material = defaultMaterial;
+      _hoveredObstacle.GetComponent<Renderer>().material = _hoveredObstacle.GetComponent<ObstacleMoveController>().defaultMaterial;
       _hoveredObstacle = null;
     }
 
