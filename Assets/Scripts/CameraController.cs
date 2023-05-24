@@ -19,10 +19,15 @@ public class CameraController : MonoBehaviour {
   }
 
   public void SetMode(bool use2DCamera) {
+    bool didSwitchCamera = is2DMode != use2DCamera;
+
     is2DMode = use2DCamera;
     Camera3D.Priority = is2DMode ? 0 : 1;
     Camera2D.Priority = is2DMode ? 1 : 0;
-    StartCoroutine(PlayAnimationOnce());
+
+    if (didSwitchCamera) {
+      StartCoroutine(PlayAnimationOnce());
+    }
     
     //Debug.Log("camera is 2d: " + is2DMode);
     if (is2DMode) {
@@ -35,9 +40,9 @@ public class CameraController : MonoBehaviour {
   }
 
   public bool IsCamera3D => !is2DMode;
-  private IEnumerator PlayAnimationOnce(){
-  characterMovement.myAnimator.SetBool("IsCamera3D", true);
-  yield return null;
-  characterMovement.myAnimator.SetBool("IsCamera3D", false);
+  private IEnumerator PlayAnimationOnce() {
+    characterMovement.myAnimator.SetBool("IsCamera3D", true);
+    yield return null;
+    characterMovement.myAnimator.SetBool("IsCamera3D", false);
   }
 }
