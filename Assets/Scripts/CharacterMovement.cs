@@ -13,7 +13,7 @@ public class CharacterMovement : MonoBehaviour
 
     float xValue; 
     SpriteRenderer spriteRenderer;
-    Animator myAnimator;
+    public Animator myAnimator;
     //public Animator CameraAnimator;
     public CameraController cameraController;
     
@@ -79,29 +79,25 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    bool canSwitchCamera = false;
+    public bool canSwitchCamera = false;
     void OnTriggerEnter(Collider Cother) {
 
         switch(Cother.gameObject.tag){
-
             case "PerspectiveChangeZone":
             //ChangeCameraView();
             canSwitchCamera = true;
             break;
-
         }
     }
 
     void OnTriggerExit(Collider otherC) {
         
         switch(otherC.gameObject.tag){
-
             case "PerspectiveChangeZone":
             //CameraAnimator.SetBool("IsCamera3D",false);
             canSwitchCamera = false;
             cameraController.SetMode(use2DCamera: true);
             break;
-
         }
     }
 
@@ -114,8 +110,11 @@ public class CharacterMovement : MonoBehaviour
 
       if (Input.GetKeyDown(KeyCode.F) && cameraController.IsCamera3D == false) {
           cameraController.SetMode(use2DCamera: false);
+          
+           
       } else if (Input.GetKeyDown(KeyCode.F) && cameraController.IsCamera3D == true) {
           cameraController.SetMode(use2DCamera: true);
+          
       }
 
 

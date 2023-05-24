@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 836f33d6f440de84baf7aad38e89af68
+guid: f444a774229c0ee43a8fda3c1baa527d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9031069430885825437
-    second: frog_tongue_sprite-Sheet_0
+      213: 3231522989103534096
+    second: frog_tongue_sprite-Sheet2_0
   - first:
-      213: -4762044793330512000
-    second: frog_tongue_sprite-Sheet_1
+      213: 6382399908939323140
+    second: frog_tongue_sprite-Sheet2_1
   - first:
-      213: -4893485987998252648
-    second: frog_tongue_sprite-Sheet_2
+      213: 8777326291526518956
+    second: frog_tongue_sprite-Sheet2_2
   - first:
-      213: -3684757170762491368
-    second: frog_tongue_sprite-Sheet_3
+      213: -2579252963344072195
+    second: frog_tongue_sprite-Sheet2_3
   - first:
-      213: -6696176179528307118
-    second: frog_tongue_sprite-Sheet_4
+      213: -5387588708180644308
+    second: frog_tongue_sprite-Sheet2_4
   - first:
-      213: 5621203653656766840
-    second: frog_tongue_sprite-Sheet_5
+      213: -7105897517196873225
+    second: frog_tongue_sprite-Sheet2_5
   - first:
-      213: -3177283545374469267
-    second: frog_tongue_sprite-Sheet_6
+      213: 5561117089298896362
+    second: frog_tongue_sprite-Sheet2_6
   - first:
-      213: -984696993089774734
-    second: frog_tongue_sprite-Sheet_7
+      213: -6327554183598083683
+    second: frog_tongue_sprite-Sheet2_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -56,7 +56,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -92,7 +92,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -104,19 +104,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -128,7 +116,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -139,13 +127,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: frog_tongue_sprite-Sheet_0
+      name: frog_tongue_sprite-Sheet2_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 0
-        width: 48
-        height: 48
+        width: 30
+        height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +141,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9bb6d97ccdc45d70800000000000000
-      internalID: 9031069430885825437
+      spriteID: 0105609890da8dc20800000000000000
+      internalID: 3231522989103534096
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: frog_tongue_sprite-Sheet_1
+      name: frog_tongue_sprite-Sheet2_1
       rect:
         serializedVersion: 2
         x: 48
         y: 0
-        width: 48
-        height: 48
+        width: 30
+        height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08f4909ad71d9edb0800000000000000
-      internalID: -4762044793330512000
+      spriteID: 40750dad6e6d29850800000000000000
+      internalID: 6382399908939323140
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: frog_tongue_sprite-Sheet_2
+      name: frog_tongue_sprite-Sheet2_2
       rect:
         serializedVersion: 2
-        x: 96
+        x: 97
         y: 0
-        width: 48
-        height: 48
+        width: 29
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +183,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8914304bb68d61cb0800000000000000
-      internalID: -4893485987998252648
+      spriteID: ca8822402c35fc970800000000000000
+      internalID: 8777326291526518956
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: frog_tongue_sprite-Sheet_3
+      name: frog_tongue_sprite-Sheet2_3
       rect:
         serializedVersion: 2
         x: 144
         y: 0
-        width: 48
-        height: 48
+        width: 30
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,20 +204,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81ad02930ec1ddcc0800000000000000
-      internalID: -3684757170762491368
+      spriteID: df1c0066817a43cd0800000000000000
+      internalID: -2579252963344072195
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: frog_tongue_sprite-Sheet_4
+      name: frog_tongue_sprite-Sheet2_4
       rect:
         serializedVersion: 2
-        x: 192
+        x: 191
         y: 0
-        width: 48
-        height: 48
+        width: 31
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,20 +225,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25e68c91e376213a0800000000000000
-      internalID: -6696176179528307118
+      spriteID: c2eacf45d907b35b0800000000000000
+      internalID: -5387588708180644308
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: frog_tongue_sprite-Sheet_5
+      name: frog_tongue_sprite-Sheet2_5
       rect:
         serializedVersion: 2
         x: 240
         y: 0
-        width: 48
-        height: 48
+        width: 30
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,20 +246,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 879e65ac0f6820e40800000000000000
-      internalID: 5621203653656766840
+      spriteID: 7f176255bd7c26d90800000000000000
+      internalID: -7105897517196873225
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: frog_tongue_sprite-Sheet_6
+      name: frog_tongue_sprite-Sheet2_6
       rect:
         serializedVersion: 2
         x: 288
         y: 0
-        width: 48
-        height: 48
+        width: 30
+        height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,20 +267,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d63d24f037508e3d0800000000000000
-      internalID: -3177283545374469267
+      spriteID: ae5d306578e0d2d40800000000000000
+      internalID: 5561117089298896362
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: frog_tongue_sprite-Sheet_7
+      name: frog_tongue_sprite-Sheet2_7
       rect:
         serializedVersion: 2
-        x: 336
+        x: 337
         y: 0
-        width: 48
-        height: 48
+        width: 30
+        height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,8 +288,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27b1d7b4d47a552f0800000000000000
-      internalID: -984696993089774734
+      spriteID: d91799daef20038a0800000000000000
+      internalID: -6327554183598083683
       vertices: []
       indices: 
       edges: []
@@ -309,7 +297,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 4b7037887cf3e6141898731859d4492c
+    spriteID: 25a9d8287cb09a440b64d5780b1935c8
     internalID: 0
     vertices: []
     indices: 
