@@ -45,18 +45,29 @@ public class CharacterMovement : MonoBehaviour {
     WinGameUI.SetActive(false);
   }
 
-  // Update is called once per frame
+  bool jumpPressed;
   void Update() {
-    if (isDead) {
-      return;
+    if (isDead) { return; }
+
+    if (Input.GetKeyDown(KeyCode.Space) && isGrounded && JumpCount == 1) {
+      jumpPressed = true;
     }
+  }
+
+  void FixedUpdate() {
+    if (isDead) { return; }
+
     Movement();
     ChangeCameraView();
   }
 
   void Movement() {
 
-    if (!cameraController.IsCamera3D) {
+    if (cameraController.IsCamera3D) {
+       myAnimator.SetFloat("Speed", 0);
+       return;
+    }
+
       //Movement
       isGrounded = true;
       xValue = Input.GetAxisRaw("Horizontal") * MovementSpeed * Time.deltaTime;
@@ -64,7 +75,8 @@ public class CharacterMovement : MonoBehaviour {
       myAnimator.SetFloat("Speed", Mathf.Abs(xValue));
 
       //Jumping
-      if (Input.GetKeyDown(KeyCode.Space) && isGrounded && JumpCount == 1) {
+      if (jumpPressed) {
+        jumpPressed = false;
         isGrounded = false;
         myAnimator.SetBool("isJumping", true);
         myRigidbody.AddForce(Vector3.up * JumpForce);
@@ -87,10 +99,6 @@ public class CharacterMovement : MonoBehaviour {
       if (xValue < 0 && flipped) {
         FlipLeft();
       }
-
-    } else {
-      myAnimator.SetFloat("Speed", 0);
-    }
   }
 
   // this can be done easier 
