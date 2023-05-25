@@ -6,6 +6,11 @@ public class LickTarget : MonoBehaviour {
   [SerializeField]
   Animator animator;
 
+  [SerializeField]
+  Transform targetPosition;
+
+  public Transform TargetPosition => targetPosition;
+
   bool inRange = false;
 
   void Start() {

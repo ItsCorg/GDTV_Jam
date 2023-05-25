@@ -24,7 +24,13 @@ public class CharacterMovement : MonoBehaviour {
   //public Animator CameraAnimator;
   public CameraController cameraController;
   public MenuController menuController;
-  public Transform CheckPointTransform; 
+  public Transform CheckPointTransform;
+
+  [SerializeField]
+  GameObject WinGameUI;
+
+  [SerializeField]
+  TongueScript tongueScript;
 
 
   // Start is called before the first frame update
@@ -35,10 +41,15 @@ public class CharacterMovement : MonoBehaviour {
     isGrounded = true;
     xValue = 0;
     Canva.SetActive(false);
+    CheckPointTransform.transform.position = transform.position; // initialize checkpoint to Frog position at start of game
+    WinGameUI.SetActive(false);
   }
 
   // Update is called once per frame
   void Update() {
+    if (isDead) {
+      return;
+    }
     Movement();
     ChangeCameraView();
   }
@@ -115,14 +126,20 @@ public class CharacterMovement : MonoBehaviour {
       case "PerspectiveChangeZone":
         canSwitchCamera = true;
         Cother.transform.parent.GetComponent<LickTarget>()?.ToggleInRange(true);
+        tongueScript.tongueTarget = Cother.gameObject.transform.parent.GetComponent<LickTarget>().TargetPosition;
         break;
 
         case "DeathZone":
         Die();
         CameraController.SetActive(false);
         break;
+        case "WinZone":
+        Win();
+        CameraController.SetActive(false);
+        break;
 
-        case "Checkpoint":
+      case "CheckPoints":
+        // TODO improvement would be that if player goes back in the level they don't activate previous checkpoints but instead keep the furthest checkpoint active
         CheckPointTransform.position = Cother.transform.position;
         break;
   }
@@ -167,14 +184,20 @@ public class CharacterMovement : MonoBehaviour {
     return myAnimator.GetBool("IsCamera3D");
   }
 
- void Die()
-    {
-        isDead = true;
-        Canva.SetActive(true);
-    }
+  void Win() {
+    WinGameUI.SetActive(true);
+    Die();
+  }
 
-    public void RetryLastCheckpoint()
+  void Die() {
+    myAnimator.enabled = false;
+    isDead = true;
+    Canva.SetActive(true);
+  }
+
+  public void RetryLastCheckpoint()
     {
+        myAnimator.enabled = true;
         transform.position = CheckPointTransform.position;
         isDead = false;
         Canva.SetActive(false);
