@@ -7,6 +7,9 @@ TagManager:
   - Platform
   - PerspectiveChangeZone
   - Obstacle
+  - DeathZone
+  - CheckPoints
+  - GM
   layers:
   - Default
   - TransparentFX
