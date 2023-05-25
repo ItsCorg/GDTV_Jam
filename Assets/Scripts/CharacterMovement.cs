@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.UI.GridLayoutGroup;
+using UnityEngine.SceneManagement; 
 
 public class CharacterMovement : MonoBehaviour {
 
@@ -15,8 +16,15 @@ public class CharacterMovement : MonoBehaviour {
   SpriteRenderer spriteRenderer;
   [SerializeField]
   Animator myAnimator;
+  bool isDead = false;
+
+  public GameObject Canva;
+  public GameObject CameraController; 
+  
   //public Animator CameraAnimator;
   public CameraController cameraController;
+  public MenuController menuController;
+  public Transform CheckPointTransform; 
 
 
   // Start is called before the first frame update
@@ -24,9 +32,9 @@ public class CharacterMovement : MonoBehaviour {
     myRigidbody = GetComponent<Rigidbody>();
     spriteRenderer = GetComponent<SpriteRenderer>();
     myAnimator = GetComponent<Animator>();
-    JumpCount = 1;
     isGrounded = true;
     xValue = 0;
+    Canva.SetActive(false);
   }
 
   // Update is called once per frame
@@ -106,11 +114,19 @@ public class CharacterMovement : MonoBehaviour {
 
     switch (Cother.gameObject.tag) {
       case "PerspectiveChangeZone":
-        Debug.Log("trigger enter");
         canSwitchCamera = true;
         Cother.transform.parent.GetComponent<LickTarget>()?.ToggleInRange(true);
         break;
-    }
+
+        case "DeathZone":
+        Die();
+        CameraController.SetActive(false);
+        break;
+
+        case "Checkpoint":
+        CheckPointTransform.position = Cother.transform.position;
+        break;
+  }
   }
   void OnTriggerExit(Collider otherC) {
 
@@ -152,5 +168,33 @@ public class CharacterMovement : MonoBehaviour {
     return myAnimator.GetBool("IsCamera3D");
   }
 
+ void Die()
+    {
+        isDead = true;
+        Canva.SetActive(true);
+    }
+
+    public void RetryLastCheckpoint()
+    {
+        transform.position = CheckPointTransform.position;
+        isDead = false;
+        Canva.SetActive(false);
+        CameraController.SetActive(true);
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        CameraController.SetActive(true);
+    }
+
+    public void GoToMainMenu()
+    {
+        menuController.MainMenu();
+        CameraController.SetActive(true);
+    }
+
 
 }
+
+

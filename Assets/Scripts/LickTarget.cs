@@ -13,7 +13,6 @@ public class LickTarget : MonoBehaviour {
   }
 
   public void ToggleInRange(bool inRange) {
-    Debug.Log("lick target " + inRange);
     this.inRange = inRange;
     animator.SetBool("inRange", inRange);
   }
