@@ -53,15 +53,15 @@ public class CharacterMovement : MonoBehaviour {
 
     if (Input.GetKeyDown(KeyCode.Space) && isGrounded && JumpCount == 1) {
       jumpPressed = true;
-      
     }
+
+    ChangeCameraView();
   }
 
   void FixedUpdate() {
     if (isDead) { return; }
 
     Movement();
-    ChangeCameraView();
   }
 
   void Movement() {
