@@ -11,6 +11,7 @@ public class CharacterMovement : MonoBehaviour {
   [SerializeField] int JumpCount;
   [SerializeField] bool isGrounded;
   Rigidbody myRigidbody;
+  public ParticleSystem particleS; 
 
   float xValue;
   SpriteRenderer spriteRenderer;
@@ -43,6 +44,7 @@ public class CharacterMovement : MonoBehaviour {
     Canva.SetActive(false);
     CheckPointTransform.transform.position = transform.position; // initialize checkpoint to Frog position at start of game
     WinGameUI.SetActive(false);
+    
   }
 
   bool jumpPressed;
@@ -51,6 +53,7 @@ public class CharacterMovement : MonoBehaviour {
 
     if (Input.GetKeyDown(KeyCode.Space) && isGrounded && JumpCount == 1) {
       jumpPressed = true;
+      
     }
   }
 
@@ -72,6 +75,7 @@ public class CharacterMovement : MonoBehaviour {
       isGrounded = true;
       xValue = Input.GetAxisRaw("Horizontal") * MovementSpeed * Time.deltaTime;
       transform.Translate(xValue, 0, 0);
+      //particleS.Stop();
       myAnimator.SetFloat("Speed", Mathf.Abs(xValue));
 
       //Jumping
@@ -81,6 +85,7 @@ public class CharacterMovement : MonoBehaviour {
         myAnimator.SetBool("isJumping", true);
         myRigidbody.AddForce(Vector3.up * JumpForce);
         JumpCount--;
+        particleS.Stop();
       } else {
         isGrounded = true;
       }
@@ -99,6 +104,9 @@ public class CharacterMovement : MonoBehaviour {
       if (xValue < 0 && flipped) {
         FlipLeft();
       }
+      if (xValue ==0) {
+        particleS.Stop(); 
+      }
   }
 
   // this can be done easier 
@@ -107,11 +115,13 @@ public class CharacterMovement : MonoBehaviour {
     flipped = true;
     var s = transform.localScale; s.x *= -1;
     transform.localScale = s;
+    particleS.Play(); 
   }
   void FlipLeft() {
     flipped = false;
     var s = transform.localScale; s.x = Mathf.Abs(s.x);
     transform.localScale = s;
+    particleS.Play();
   }
 
   void OnCollisionEnter(Collision other) {
