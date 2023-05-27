@@ -13,6 +13,8 @@ public class CharacterMovement : MonoBehaviour {
   Rigidbody myRigidbody;
   [SerializeField] private ParticleSystem stepParticle;
   [SerializeField] private ParticleSystem jumpParticle;
+  [SerializeField] private ParticleSystem sparkParticle;
+  
 
   float xValue;
   SpriteRenderer spriteRenderer;
@@ -130,6 +132,10 @@ public class CharacterMovement : MonoBehaviour {
     //Called every jump
     public void FrogJump() {
         jumpParticle.Play();
+    }
+
+     public void SparkPlay() {
+        sparkParticle.Play();
     }
 
 //commented this out because in the usual case you dont wanna flip the whole object as that can cause issues later
