@@ -8,9 +8,10 @@ public class ObjectMovement : MonoBehaviour
     public float leftDistance = 1f;
     public float rightDistance = 1f;
     public float axisSwapRange = 0.1f;
-    public Material lineMaterial;
+    [SerializeField]private float moveSpeed;
 
     private Vector3 originalPosition;
+    public Material lineMaterial;
     private LineRenderer upLineRenderer;
     private LineRenderer downLineRenderer;
     private LineRenderer leftLineRenderer;
@@ -53,36 +54,35 @@ public class ObjectMovement : MonoBehaviour
 
     private void MoveObject()
     {
-        float mouseX = Input.mousePosition.x;
-        float mouseY = Input.mousePosition.y;
+        Vector3 movement = Vector3.zero;
 
-        Vector3 mousePositionScreen = new Vector3(mouseX, mouseY, Camera.main.transform.position.y);
-        Vector3 mousePositionWorld = Camera.main.ScreenToWorldPoint(mousePositionScreen);
-
-        Vector3 movement = mousePositionWorld - originalPosition;
-        movement.z = 0f;
-
-        // Check if outside axis swap range
-        bool outsideRange = Mathf.Abs(movement.x) > axisSwapRange || Mathf.Abs(movement.y) > axisSwapRange;
-
-        if (outsideRange)
+        // Check arrow key inputs
+        if (Input.GetKey(KeyCode.RightArrow))
         {
-            // Only allow movement on the dominant axis
-            if (Mathf.Abs(movement.x) > Mathf.Abs(movement.y))
-            {
-                movement.y = 0f;
-            }
-            else
-            {
-                movement.x = 0f;
-            }
+            movement += Vector3.right;
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            movement += Vector3.left;
         }
 
-        // Apply distance limits
-        movement.x = Mathf.Clamp(movement.x, -leftDistance, rightDistance);
-        movement.y = Mathf.Clamp(movement.y, -downDistance, upDistance);
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            movement += Vector3.up;
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            movement += Vector3.down;
+        }
 
-        transform.position = originalPosition + movement;
+        movement *= Time.deltaTime * moveSpeed;
+
+        // Apply distance limits
+        Vector3 newPosition = transform.position + movement;
+        newPosition.x = Mathf.Clamp(newPosition.x, originalPosition.x - leftDistance, originalPosition.x + rightDistance);
+        newPosition.y = Mathf.Clamp(newPosition.y, originalPosition.y - downDistance, originalPosition.y + upDistance);
+
+        transform.position = newPosition;
 
         UpdateLineRendererPositions();
     }

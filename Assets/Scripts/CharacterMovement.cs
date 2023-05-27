@@ -14,6 +14,8 @@ public class CharacterMovement : MonoBehaviour {
   [SerializeField] private ParticleSystem stepParticle;
   [SerializeField] private ParticleSystem jumpParticle;
 
+    [SerializeField] private GameObject tongue;
+
   float xValue;
   SpriteRenderer spriteRenderer;
   [SerializeField]
@@ -110,6 +112,7 @@ public class CharacterMovement : MonoBehaviour {
 
             jumpParticle.transform.position = transform.position + new Vector3(-0.5f, -0.5f);
             jumpParticle.transform.rotation = Quaternion.Euler(45f, -90f, 0f);
+            tongue.transform.position = transform.position + new Vector3(0.35f, -0.3f);
         }
         else if (xValue < 0) {
             spriteRenderer.flipX = false;
@@ -119,6 +122,7 @@ public class CharacterMovement : MonoBehaviour {
 
             jumpParticle.transform.position = transform.position + new Vector3(0.5f, -0.5f);
             jumpParticle.transform.rotation = Quaternion.Euler(45f, 90f, 0f);
+            tongue.transform.position = transform.position + new Vector3(-0.35f, -0.3f);
         }
     }
 
