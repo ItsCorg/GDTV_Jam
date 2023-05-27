@@ -11,7 +11,8 @@ public class CharacterMovement : MonoBehaviour {
   [SerializeField] int JumpCount;
   [SerializeField] bool isGrounded;
   Rigidbody myRigidbody;
-  public ParticleSystem particleS; 
+  [SerializeField] private ParticleSystem stepParticle;
+  [SerializeField] private ParticleSystem jumpParticle;
 
   float xValue;
   SpriteRenderer spriteRenderer;
@@ -36,6 +37,7 @@ public class CharacterMovement : MonoBehaviour {
 
   // Start is called before the first frame update
   void Start() {
+
     myRigidbody = GetComponent<Rigidbody>();
     spriteRenderer = GetComponent<SpriteRenderer>();
     myAnimator = GetComponent<Animator>();
@@ -85,11 +87,11 @@ public class CharacterMovement : MonoBehaviour {
         myAnimator.SetBool("isJumping", true);
         myRigidbody.AddForce(Vector3.up * JumpForce);
         JumpCount--;
-        particleS.Stop();
       } else {
         isGrounded = true;
       }
 
+      /*
       //Flipping sprite
       if (xValue < 0) {
         // flipX in spriteRenderer: Only the rendering is affected. Use negative Transform.scale, if you want to affect all the other components (for example colliders).
@@ -97,32 +99,55 @@ public class CharacterMovement : MonoBehaviour {
       } else if (xValue > 0) {
         //spriteRenderer.flipX = true;
       }
+      */
 
-      if (xValue > 0 && !flipped) {
-        FlipRight();
-      }
-      if (xValue < 0 && flipped) {
-        FlipLeft();
-      }
-      if (xValue ==0) {
-        particleS.Stop(); 
-      }
-  }
+      //handle flip and particle direction
+      if (xValue > 0) {
+        spriteRenderer.flipX = true;
 
+            stepParticle.transform.position = transform.position + new Vector3(-0.5f, -0.5f);
+            stepParticle.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+
+            jumpParticle.transform.position = transform.position + new Vector3(-0.5f, -0.5f);
+            jumpParticle.transform.rotation = Quaternion.Euler(45f, -90f, 0f);
+        }
+        else if (xValue < 0) {
+            spriteRenderer.flipX = false;
+
+            stepParticle.transform.position = transform.position + new Vector3(0.5f, -0.5f);
+            stepParticle.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+
+            jumpParticle.transform.position = transform.position + new Vector3(0.5f, -0.5f);
+            jumpParticle.transform.rotation = Quaternion.Euler(45f, 90f, 0f);
+        }
+    }
+
+    //Called every step
+    public void FrogStep() {
+        stepParticle.Play();
+    }
+
+    //Called every jump
+    public void FrogJump() {
+        jumpParticle.Play();
+    }
+
+//commented this out because in the usual case you dont wanna flip the whole object as that can cause issues later
+//its better to just use spriterenderer.flip
+/*
   // this can be done easier 
   bool flipped = false;
   void FlipRight() {
     flipped = true;
     var s = transform.localScale; s.x *= -1;
     transform.localScale = s;
-    particleS.Play(); 
   }
   void FlipLeft() {
     flipped = false;
     var s = transform.localScale; s.x = Mathf.Abs(s.x);
     transform.localScale = s;
-    particleS.Play();
   }
+*/
 
   void OnCollisionEnter(Collision other) {
     //Reset Jump Count when touching a platform

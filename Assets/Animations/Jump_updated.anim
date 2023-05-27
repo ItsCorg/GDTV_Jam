@@ -20,18 +20,16 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 2771739058548850986, guid: 79720510a222f764b9696ca0af910ebc, type: 3}
-    - time: 0.125
       value: {fileID: -207444902034817167, guid: 79720510a222f764b9696ca0af910ebc, type: 3}
-    - time: 0.25
+    - time: 0.125
       value: {fileID: 4298122198204914007, guid: 79720510a222f764b9696ca0af910ebc, type: 3}
-    - time: 0.375
+    - time: 0.25
       value: {fileID: 7445591004486344557, guid: 2d5d260c69445074a90fec63f2025207, type: 3}
-    - time: 0.5
+    - time: 0.375
       value: {fileID: 2915520717485303535, guid: 2d5d260c69445074a90fec63f2025207, type: 3}
-    - time: 0.625
+    - time: 0.5
       value: {fileID: 8802351382488133693, guid: 2d5d260c69445074a90fec63f2025207, type: 3}
-    - time: 0.75
+    - time: 0.625
       value: {fileID: 8835710511029158965, guid: 2d5d260c69445074a90fec63f2025207, type: 3}
     attribute: m_Sprite
     path: 
@@ -52,7 +50,6 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 2771739058548850986, guid: 79720510a222f764b9696ca0af910ebc, type: 3}
     - {fileID: -207444902034817167, guid: 79720510a222f764b9696ca0af910ebc, type: 3}
     - {fileID: 4298122198204914007, guid: 79720510a222f764b9696ca0af910ebc, type: 3}
     - {fileID: 7445591004486344557, guid: 2d5d260c69445074a90fec63f2025207, type: 3}
@@ -64,7 +61,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.875
+    m_StopTime: 0.75
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -83,4 +80,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: FrogJump
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
