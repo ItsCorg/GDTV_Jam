@@ -18,8 +18,8 @@ public class ObstacleSelectionManager : MonoBehaviour {
 
   public void DeselectObstacle() {
     if (_selectedObstacle != null) {
-      _selectedObstacle.GetComponent<Renderer>().material = _selectedObstacle.GetComponent<ObstacleMoveController>().defaultMaterial;
-      _selectedObstacle.GetComponent<ObstacleMoveController>().ToggleSelection();
+            //_selectedObstacle.GetComponent<Renderer>().material =     <-  fix material reverting here
+            _selectedObstacle.GetComponent<ObjectMovement>().canMove = false;
       _selectedObstacle = null;
     }
   }
@@ -27,7 +27,7 @@ public class ObstacleSelectionManager : MonoBehaviour {
   void Update() {
     // if we were hovering over an obstacle and are not hovering over it anymore, then we reset its material (unless the obstacle is selected for moving)
     if (_hoveredObstacle != null && _hoveredObstacle != _selectedObstacle) {
-      _hoveredObstacle.GetComponent<Renderer>().material = _hoveredObstacle.GetComponent<ObstacleMoveController>().defaultMaterial;
+            _hoveredObstacle.GetComponent<Renderer>().material = _hoveredObstacle.GetComponent<Material>();
       _hoveredObstacle = null;
     }
 
@@ -69,7 +69,7 @@ public class ObstacleSelectionManager : MonoBehaviour {
         // store the obstacle we just selected
         _selectedObstacle = obstacle;
         isSelected = true;
-        _selectedObstacle.GetComponent<ObstacleMoveController>().ToggleSelection();
+                _selectedObstacle.GetComponent<ObjectMovement>().canMove = true;
       }
       _hoveredObstacle = obstacle;
     }

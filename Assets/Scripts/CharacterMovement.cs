@@ -162,8 +162,12 @@ public class CharacterMovement : MonoBehaviour {
   void OnCollisionEnter(Collision other) {
     //Reset Jump Count when touching a platform
     switch (other.gameObject.tag) {
-
-      case "Platform":
+            case "Obstacle":
+       JumpCount = 1;
+       isGrounded = true;
+       myAnimator.SetBool("isJumping", false);
+       break;
+            case "Platform":
         JumpCount = 1;
         isGrounded = true;
         myAnimator.SetBool("isJumping", false);

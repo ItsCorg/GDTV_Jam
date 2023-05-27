@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4424044050940591313}
   - component: {fileID: 6661825278659571834}
   m_Layer: 0
-  m_Name: Ground3
+  m_Name: Stonebrick
   m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a4a05b9eda2d88248b65b0622349eddb, type: 2}
+  - {fileID: 2100000, guid: 944331a4cd0915241ab6d49123dd210e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

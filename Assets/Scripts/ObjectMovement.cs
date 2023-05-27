@@ -57,20 +57,20 @@ public class ObjectMovement : MonoBehaviour
         Vector3 movement = Vector3.zero;
 
         // Check arrow key inputs
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) && Mathf.Abs(transform.position.y - originalPosition.y) <= axisSwapRange)
         {
             movement += Vector3.right;
         }
-        else if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow) && Mathf.Abs(transform.position.y - originalPosition.y) <= axisSwapRange)
         {
             movement += Vector3.left;
         }
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow) && Mathf.Abs(transform.position.x - originalPosition.x) <= axisSwapRange)
         {
             movement += Vector3.up;
         }
-        else if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.DownArrow) && Mathf.Abs(transform.position.x - originalPosition.x) <= axisSwapRange)
         {
             movement += Vector3.down;
         }
