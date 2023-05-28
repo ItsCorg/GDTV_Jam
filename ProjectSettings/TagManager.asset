@@ -11,6 +11,7 @@ TagManager:
   - CheckPoints
   - GM
   - WinZone
+  - End
   layers:
   - Default
   - TransparentFX

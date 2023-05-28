@@ -13,7 +13,7 @@ public class CharacterMovement : MonoBehaviour {
   Rigidbody myRigidbody;
   [SerializeField] private ParticleSystem stepParticle;
   [SerializeField] private ParticleSystem jumpParticle;
-  [SerializeField] private ParticleSystem sparkParticle;
+  
   
 
     [SerializeField] private GameObject tongue;
@@ -30,6 +30,7 @@ public class CharacterMovement : MonoBehaviour {
   //public Animator CameraAnimator;
   public CameraController cameraController;
   public MenuController menuController;
+  public GameObject EndScenario; 
   public Transform CheckPointTransform;
 
   [SerializeField]
@@ -138,9 +139,7 @@ public class CharacterMovement : MonoBehaviour {
         jumpParticle.Play();
     }
 
-     public void SparkPlay() {
-        sparkParticle.Play();
-    }
+    
 
 //commented this out because in the usual case you dont wanna flip the whole object as that can cause issues later
 //its better to just use spriterenderer.flip
@@ -191,7 +190,7 @@ public class CharacterMovement : MonoBehaviour {
         CameraController.SetActive(false);
         break;
         case "WinZone":
-        Win();
+        //Win();
         CameraController.SetActive(false);
         break;
 
@@ -199,6 +198,7 @@ public class CharacterMovement : MonoBehaviour {
         // TODO improvement would be that if player goes back in the level they don't activate previous checkpoints but instead keep the furthest checkpoint active
         CheckPointTransform.position = Cother.transform.position;
         break;
+      
   }
   }
   void OnTriggerExit(Collider otherC) {
@@ -241,7 +241,7 @@ public class CharacterMovement : MonoBehaviour {
     return myAnimator.GetBool("IsCamera3D");
   }
 
-  void Win() {
+ public void Win() {
     WinGameUI.SetActive(true);
     Die();
   }
