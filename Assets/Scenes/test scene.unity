@@ -79600,7 +79600,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1228355382457554620, guid: 1d6ef34724d1cb946a8730b293c20ed7, type: 3}
   m_PrefabInstance: {fileID: 1228355382051529648}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 954797304}
+  m_GameObject: {fileID: 1831922745}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80cea4a372c9c4d4bbbc47a2c3da69ba, type: 3}
@@ -81692,7 +81692,7 @@ Transform:
   - {fileID: 1591089638}
   - {fileID: 1839968716}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1784834286
 BoxCollider:
@@ -81720,8 +81720,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterMovement: {fileID: 1749857548}
-  FrogSpriteRenderer: {fileID: 954797308}
-  Frog: {fileID: 954797304}
+  FrogSpriteRenderer: {fileID: 1831922749}
+  Frog: {fileID: 1831922745}
 --- !u!1001 &1786312083
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83632,6 +83632,16 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4627563429441312541, guid: 9715332f5fd7a384e8e2dcebf44d4b4b, type: 3}
   m_PrefabInstance: {fileID: 1830609221}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1831922745 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1228355382457554619, guid: 1d6ef34724d1cb946a8730b293c20ed7, type: 3}
+  m_PrefabInstance: {fileID: 1228355382051529648}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1831922749 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1228355382457554621, guid: 1d6ef34724d1cb946a8730b293c20ed7, type: 3}
+  m_PrefabInstance: {fileID: 1228355382051529648}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1831964357 stripped
 Transform:
@@ -93927,7 +93937,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2042179892
 PrefabInstance:
