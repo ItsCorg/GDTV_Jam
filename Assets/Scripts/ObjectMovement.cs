@@ -16,10 +16,12 @@ public class ObjectMovement : MonoBehaviour
     private LineRenderer downLineRenderer;
     private LineRenderer leftLineRenderer;
     private LineRenderer rightLineRenderer;
+    private Material objectMaterial;
 
     private void Awake()
     {
         originalPosition = transform.position;
+        objectMaterial = GetComponent<Renderer>().material;
 
         // Create and configure line renderers for each direction
         upLineRenderer = CreateLineRenderer();
@@ -124,5 +126,9 @@ public class ObjectMovement : MonoBehaviour
 
         rightLineRenderer.SetPosition(0, originalPosition);
         rightLineRenderer.SetPosition(1, originalPosition + Vector3.right * rightDistance);
+    }
+
+    public void ResetMaterial() {
+        GetComponent<Renderer>().material = objectMaterial;
     }
 }
