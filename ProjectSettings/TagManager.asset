@@ -7,6 +7,11 @@ TagManager:
   - Platform
   - PerspectiveChangeZone
   - Obstacle
+  - DeathZone
+  - CheckPoints
+  - GM
+  - WinZone
+  - End
   layers:
   - Default
   - TransparentFX
@@ -43,4 +48,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackGround
+    uniqueID: 1144009747
+    locked: 0
+  - name: Player
+    uniqueID: 1447579237
+    locked: 0
+  - name: ForeGround
+    uniqueID: 2703966803
+    locked: 0
+  - name: LineRenderer
+    uniqueID: 121854291
     locked: 0
