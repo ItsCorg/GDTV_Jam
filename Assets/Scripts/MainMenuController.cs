@@ -6,7 +6,7 @@ public class MainMenuController : MonoBehaviour
 
     public void StartLevel()
     {
-        SceneManager.LoadScene("Sofiane-gym"); 
+        SceneManager.LoadScene("test scene"); 
     } 
 
     public void QuitGame()
