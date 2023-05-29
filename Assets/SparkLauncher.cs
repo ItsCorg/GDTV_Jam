@@ -5,6 +5,9 @@ using UnityEngine;
 public class SparkLauncher : MonoBehaviour
 {
     public ParticleSystem sparkParticle;
+     public AudioClip animationStartSound;
+     public AudioClip puff; 
+     public AudioSource soundEffect; 
     // Start is called before the first frame update
     void Start()
     {
@@ -25,4 +28,18 @@ public class SparkLauncher : MonoBehaviour
     public void SparkStop() {
         sparkParticle.Stop();
     }
+
+ public void KissSound() {
+        // Play the sound effect at the beginning of the animation
+            soundEffect.clip = animationStartSound;
+            soundEffect.Play();
+    }
+
+ public void Puff() {
+        // Play the sound effect at the beginning of the animation
+            soundEffect.clip = puff;
+            soundEffect.Play();
+    }
+    
+
 }

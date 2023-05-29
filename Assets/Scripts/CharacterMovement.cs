@@ -13,6 +13,9 @@ public class CharacterMovement : MonoBehaviour {
   Rigidbody myRigidbody;
   [SerializeField] private ParticleSystem stepParticle;
   [SerializeField] private ParticleSystem jumpParticle;
+  public AudioClip[] walkSounds; // Array of walk sound variations
+  public AudioClip JumpSound; //jump sound
+  public AudioSource soundEffect; // Reference to the AudioSource component
   
   
 
@@ -85,8 +88,20 @@ public class CharacterMovement : MonoBehaviour {
       //particleS.Stop();
       myAnimator.SetFloat("Speed", Mathf.Abs(xValue));
 
+        if (Mathf.Abs(xValue) > 0) {
+        if (!soundEffect.isPlaying) {
+            AudioClip walkSound = walkSounds[Random.Range(0, walkSounds.Length)];
+            soundEffect.clip = walkSound;
+            soundEffect.Play();
+        }
+    } else {
+        soundEffect.Stop();
+    }
+
       //Jumping
       if (jumpPressed) {
+        soundEffect.clip = JumpSound;
+        soundEffect.Play();  
         jumpPressed = false;
         isGrounded = false;
         myAnimator.SetBool("isJumping", true);
@@ -127,6 +142,8 @@ public class CharacterMovement : MonoBehaviour {
             jumpParticle.transform.rotation = Quaternion.Euler(45f, 90f, 0f);
             tongue.transform.position = transform.position + new Vector3(-0.35f, -0.3f);
         }
+
+        
     }
 
     //Called every step
