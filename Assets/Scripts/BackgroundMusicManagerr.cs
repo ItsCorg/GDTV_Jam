@@ -40,7 +40,7 @@ public class BackgroundMusicManagerr : MonoBehaviour
     private void Update()
     {
         // Adjust the volume balance between music and ambiance
-        audioSourceMusic.volume = 0.2f; // Set the volume for the background music (adjust as desired)
+        audioSourceMusic.volume = 0.1f; // Set the volume for the background music (adjust as desired)
         audioSourceAmbiance.volume = 0.3f; // Set the volume for the background ambiance (adjust as desired)
     }
 }

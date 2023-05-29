@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TongueScript : MonoBehaviour {
-
+    public AudioSource tongueSource;
   public CharacterMovement characterMovement;
   void Start() {
     lr = GetComponent<LineRenderer>();
@@ -60,6 +60,7 @@ public class TongueScript : MonoBehaviour {
 
     if (characterMovement.Is3DMode() && !isPlayingTongueAnim) {
       PlayTongueLineRenderer();
+            tongueSource.Play();
     }
   }
 }

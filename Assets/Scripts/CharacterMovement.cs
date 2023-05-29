@@ -88,20 +88,17 @@ public class CharacterMovement : MonoBehaviour {
       //particleS.Stop();
       myAnimator.SetFloat("Speed", Mathf.Abs(xValue));
 
-        if (Mathf.Abs(xValue) > 0) {
+       /* if (Mathf.Abs(xValue) > 0) {
         if (!soundEffect.isPlaying) {
             AudioClip walkSound = walkSounds[Random.Range(0, walkSounds.Length)];
-            soundEffect.clip = walkSound;
-            soundEffect.Play();
+            soundEffect.clip = walkSound;                                                             Made Sounds play via animation keyframes to avoid audio always cutting when standing still
         }
     } else {
         soundEffect.Stop();
-    }
+    } */
 
       //Jumping
       if (jumpPressed) {
-        soundEffect.clip = JumpSound;
-        soundEffect.Play();  
         jumpPressed = false;
         isGrounded = false;
         myAnimator.SetBool("isJumping", true);
@@ -149,33 +146,38 @@ public class CharacterMovement : MonoBehaviour {
     //Called every step
     public void FrogStep() {
         stepParticle.Play();
+        AudioClip walkSound = walkSounds[Random.Range(0, walkSounds.Length)];
+        soundEffect.clip = walkSound;
+        soundEffect.Play();
     }
 
     //Called every jump
     public void FrogJump() {
         jumpParticle.Play();
+        soundEffect.clip = JumpSound;
+        soundEffect.Play();
     }
 
-    
 
-//commented this out because in the usual case you dont wanna flip the whole object as that can cause issues later
-//its better to just use spriterenderer.flip
-/*
-  // this can be done easier 
-  bool flipped = false;
-  void FlipRight() {
-    flipped = true;
-    var s = transform.localScale; s.x *= -1;
-    transform.localScale = s;
-  }
-  void FlipLeft() {
-    flipped = false;
-    var s = transform.localScale; s.x = Mathf.Abs(s.x);
-    transform.localScale = s;
-  }
-*/
 
-  void OnCollisionEnter(Collision other) {
+    //commented this out because in the usual case you dont wanna flip the whole object as that can cause issues later
+    //its better to just use spriterenderer.flip
+    /*
+      // this can be done easier 
+      bool flipped = false;
+      void FlipRight() {
+        flipped = true;
+        var s = transform.localScale; s.x *= -1;
+        transform.localScale = s;
+      }
+      void FlipLeft() {
+        flipped = false;
+        var s = transform.localScale; s.x = Mathf.Abs(s.x);
+        transform.localScale = s;
+      }
+    */
+
+    void OnCollisionEnter(Collision other) {
     //Reset Jump Count when touching a platform
     switch (other.gameObject.tag) {
             case "Obstacle":

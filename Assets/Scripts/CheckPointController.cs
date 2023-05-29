@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CheckPointController : MonoBehaviour
 {
-
+    public AudioSource checkpointSource;
     Transform myTransform;
     Animator myAnimator; 
     // Start is called before the first frame update
@@ -24,6 +24,11 @@ public class CheckPointController : MonoBehaviour
          
         if(col.gameObject.tag == "Player"){
             myAnimator.SetBool("IsCheckPointCleared",true); 
+            if (checkpointSource != null)
+            {
+                checkpointSource.Play();
+                checkpointSource = null;
+            }
         }
     }
 }
